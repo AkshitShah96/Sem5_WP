@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .feedback-container {
+            width: 420px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .rating {
+            margin-top: 5px;
+        }
+
+        .rating input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="feedback-container">
+    <h2>Feedback Form</h2>
+
+    <form>
+        <!-- Name -->
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name" required>
+
+        <!-- Email -->
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email" required>
+
+        <!-- Rating -->
+        <label>Rating</label>
+        <div class="rating">
+            <input type="radio" name="rating"> Excellent
+            <input type="radio" name="rating"> Good
+            <input type="radio" name="rating"> Average
+            <input type="radio" name="rating"> Poor
+        </div>
+
+        <!-- Comments -->
+        <label>Comments</label>
+        <textarea placeholder="Write your feedback here..."></textarea>
+
+        <!-- Submit -->
+        <button type="submit">Submit Feedback</button>
+    </form>
+</div>
+
+</body>
+</html>

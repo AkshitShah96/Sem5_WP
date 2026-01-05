@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .survey-container {
+            width: 480px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .options {
+            margin-top: 5px;
+        }
+
+        .options input {
+            margin-right: 6px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 25px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="survey-container">
+    <h2>Student Survey</h2>
+
+    <form>
+        <!-- Multiple choice -->
+        <label>How satisfied are you with our course?</label>
+        <div class="options">
+            <input type="radio" name="satisfaction"> Very Satisfied
+            <input type="radio" name="satisfaction"> Satisfied
+            <input type="radio" name="satisfaction"> Neutral
+            <input type="radio" name="satisfaction"> Unsatisfied
+        </div>
+
+        <!-- Checkboxes -->
+        <label>Which features do you like? (Select all)</label>
+        <div class="options">
+            <input type="checkbox"> Easy Content
+            <input type="checkbox"> Practical Examples
+            <input type="checkbox"> Assignments
+            <input type="checkbox"> Support
+        </div>
+
+        <!-- Dropdown -->
+        <label>How did you hear about us?</label>
+        <select>
+            <option>Select an option</option>
+            <option>Friends</option>
+            <option>Social Media</option>
+            <option>Website</option>
+            <option>Advertisement</option>
+        </select>
+
+        <!-- Submit -->
+        <button type="submit">Submit Survey</button>
+    </form>
+</div>
+
+</body>
+</html>

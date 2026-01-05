@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Positioning Example</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 2000px; /* to show fixed position */
+            margin: 20px;
+        }
+
+        /* Common box style */
+        .box {
+            width: 200px;
+            height: 100px;
+            padding: 10px;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        /* Relative positioning */
+        .relative-box {
+            background-color: #4CAF50;
+            position: relative;
+            left: 50px;
+            top: 20px;
+        }
+
+        /* Absolute positioning */
+        .parent {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border: 2px solid black;
+        }
+
+        .absolute-box {
+            background-color: #2196F3;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Fixed positioning */
+        .fixed-box {
+            background-color: #f44336;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>CSS Positioning Example</h2>
+
+    <!-- Relative -->
+    <div class="box relative-box">
+        Relative Position
+    </div>
+
+    <!-- Absolute -->
+    <div class="parent">
+        Parent Box
+        <div class="box absolute-box">
+            Absolute Position
+        </div>
+    </div>
+
+    <!-- Fixed -->
+    <div class="box fixed-box">
+        Fixed Position
+    </div>
+
+</body>
+</html>

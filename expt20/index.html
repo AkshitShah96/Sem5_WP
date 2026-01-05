@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .contact-container {
+            width: 420px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            height: 90px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contact-container">
+    <h2>Contact Us</h2>
+
+    <form>
+        <!-- Name -->
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name" required>
+
+        <!-- Email -->
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email" required>
+
+        <!-- Subject -->
+        <label>Subject</label>
+        <input type="text" placeholder="Enter subject">
+
+        <!-- Message -->
+        <label>Message</label>
+        <textarea placeholder="Write your message here..."></textarea>
+
+        <!-- Submit -->
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+</body>
+</html>

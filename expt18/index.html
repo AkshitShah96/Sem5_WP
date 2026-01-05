@@ -1,0 +1,114 @@
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            width: 420px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .options {
+            margin-top: 5px;
+        }
+
+        .options input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Student Registration</h2>
+
+    <form>
+        <!-- Text field -->
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your name" required>
+
+        <!-- Email -->
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email" required>
+
+        <!-- Password -->
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" required>
+
+        <!-- Radio buttons -->
+        <label>Gender</label>
+        <div class="options">
+            <input type="radio" name="gender"> Male
+            <input type="radio" name="gender"> Female
+        </div>
+
+        <!-- Checkboxes -->
+        <label>Subjects</label>
+        <div class="options">
+            <input type="checkbox"> Math
+            <input type="checkbox"> Science
+            <input type="checkbox"> Computer
+        </div>
+
+        <!-- Dropdown -->
+        <label>Course</label>
+        <select>
+            <option>Select Course</option>
+            <option>B.Tech</option>
+            <option>B.Sc</option>
+            <option>B.Com</option>
+            <option>BCA</option>
+        </select>
+
+        <!-- Submit -->
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+</body>
+</html>

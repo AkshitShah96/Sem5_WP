@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            width: 400px;   
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .options {
+            margin-top: 10px;
+        }
+
+        .options input {
+            margin-right: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Registration Form</h2>
+
+    <form>
+        <!-- Text box -->
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your name">
+
+        <!-- Email -->
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email">
+
+        <!-- Radio buttons -->
+        <label>Gender</label>
+        <div class="options">
+            <input type="radio" name="gender"> Male
+            <input type="radio" name="gender"> Female
+        </div>
+
+        <!-- Checkboxes -->
+        <label>Hobbies</label>
+        <div class="options">
+            <input type="checkbox"> Reading
+            <input type="checkbox"> Sports
+            <input type="checkbox"> Music
+        </div>
+
+        <!-- Submit button -->
+        <input type="submit" value="Register" class="submit-btn">
+    </form>
+</div>
+
+</body>
+</html>
