@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Form Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .login-container {
+            width: 350px;
+            margin: 80px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    <form onsubmit="return validateLogin()">
+        <!-- Username -->
+        <label>Username</label>
+        <input type="text" id="username">
+        <div id="userError" class="error"></div>
+
+        <!-- Password -->
+        <label>Password</label>
+        <input type="password" id="password">
+        <div id="passError" class="error"></div>
+
+        <!-- Submit -->
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+    function validateLogin() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        var userError = document.getElementById("userError");
+        var passError = document.getElementById("passError");
+
+        // Clear previous errors
+        userError.innerHTML = "";
+        passError.innerHTML = "";
+
+        var isValid = true;
+
+        // Username validation
+        if (username === "") {
+            userError.innerHTML = "Username cannot be empty";
+            isValid = false;
+        }
+
+        // Password validation
+        if (password === "") {
+            passError.innerHTML = "Password cannot be empty";
+            isValid = false;
+        } else if (password.length < 8) {
+            passError.innerHTML = "Password must be at least 8 characters";
+            isValid = false;
+        }
+
+        return isValid; // false prevents form submission
+    }
+</script>
+
+</body>
+</html>

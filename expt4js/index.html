@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile Validation Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            width: 360px;
+            margin: 80px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .checkbox {
+            margin-top: 12px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Registration</h2>
+
+    <form onsubmit="return validateForm()">
+        <!-- Mobile Number -->
+        <label>Mobile Number</label>
+        <input type="text" id="mobile" placeholder="Enter 10-digit mobile number">
+        <div id="mobileError" class="error"></div>
+
+        <!-- Terms Checkbox -->
+        <div class="checkbox">
+            <input type="checkbox" id="terms">
+            I agree to the Terms and Conditions
+        </div>
+        <div id="termsError" class="error"></div>
+
+        <!-- Submit -->
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var mobile = document.getElementById("mobile").value;
+        var terms = document.getElementById("terms").checked;
+
+        var mobileError = document.getElementById("mobileError");
+        var termsError = document.getElementById("termsError");
+
+        // Clear previous errors
+        mobileError.innerHTML = "";
+        termsError.innerHTML = "";
+
+        var isValid = true;
+
+        // Mobile number validation (exactly 10 digits)
+        var mobilePattern = /^[0-9]{10}$/;
+
+        if (mobile === "") {
+            mobileError.innerHTML = "Mobile number cannot be empty";
+            isValid = false;
+        } else if (!mobilePattern.test(mobile)) {
+            mobileError.innerHTML = "Mobile number must contain exactly 10 digits";
+            isValid = false;
+        }
+
+        // Terms & Conditions validation
+        if (!terms) {
+            termsError.innerHTML = "You must accept the Terms and Conditions";
+            isValid = false;
+        }
+
+        return isValid; // false stops form submission
+    }
+</script>
+
+</body>
+</html>

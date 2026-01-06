@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            width: 420px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        .options {
+            margin-top: 5px;
+        }
+
+        .options input {
+            margin-right: 5px;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Student Registration</h2>
+
+    <form onsubmit="return validateForm()">
+        <!-- Name -->
+        <label>Name</label>
+        <input type="text" id="name">
+        <div id="nameError" class="error"></div>
+
+        <!-- Gender -->
+        <label>Gender</label>
+        <div class="options">
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+        </div>
+        <div id="genderError" class="error"></div>
+
+        <!-- Hobbies -->
+        <label>Hobbies</label>
+        <div class="options">
+            <input type="checkbox" name="hobby"> Reading
+            <input type="checkbox" name="hobby"> Sports
+            <input type="checkbox" name="hobby"> Music
+        </div>
+        <div id="hobbyError" class="error"></div>
+
+        <!-- Course -->
+        <label>Course</label>
+        <select id="course">
+            <option value="">Select Course</option>
+            <option value="BTech">B.Tech</option>
+            <option value="BSc">B.Sc</option>
+            <option value="BCA">BCA</option>
+        </select>
+        <div id="courseError" class="error"></div>
+
+        <!-- Submit -->
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById("name").value;
+        var course = document.getElementById("course").value;
+
+        var genders = document.getElementsByName("gender");
+        var hobbies = document.getElementsByName("hobby");
+
+        var nameError = document.getElementById("nameError");
+        var genderError = document.getElementById("genderError");
+        var hobbyError = document.getElementById("hobbyError");
+        var courseError = document.getElementById("courseError");
+
+        // Clear previous errors
+        nameError.innerHTML = "";
+        genderError.innerHTML = "";
+        hobbyError.innerHTML = "";
+        courseError.innerHTML = "";
+
+        var isValid = true;
+
+        // 1. Name validation
+        if (name === "") {
+            nameError.innerHTML = "Name cannot be empty";
+            isValid = false;
+        }
+
+        // 2. Gender validation
+        var genderSelected = false;
+        for (var i = 0; i < genders.length; i++) {
+            if (genders[i].checked) {
+                genderSelected = true;
+                break;
+            }
+        }
+
+        if (!genderSelected) {
+            genderError.innerHTML = "Please select a gender";
+            isValid = false;
+        }
+
+        // 3. Hobby validation
+        var hobbySelected = false;
+        for (var i = 0; i < hobbies.length; i++) {
+            if (hobbies[i].checked) {
+                hobbySelected = true;
+                break;
+            }
+        }
+
+        if (!hobbySelected) {
+            hobbyError.innerHTML = "Select at least one hobby";
+            isValid = false;
+        }
+
+        // 4. Course validation
+        if (course === "") {
+            courseError.innerHTML = "Please select a course";
+            isValid = false;
+        }
+
+        return isValid; // false stops form submission
+    }
+</script>   
+
+</body>
+</html>

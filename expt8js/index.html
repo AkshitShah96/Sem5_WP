@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            width: 450px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .options {
+            margin-top: 5px;
+        }
+
+        .options input {
+            margin-right: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Event Registration</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <!-- Full Name -->
+        <label>Full Name</label>
+        <input type="text" id="name">
+        <div id="nameError" class="error"></div>
+
+        <!-- Email -->
+        <label>Email</label>
+        <input type="text" id="email">
+        <div id="emailError" class="error"></div>
+
+        <!-- Contact Number -->
+        <label>Contact Number</label>
+        <input type="text" id="contact">
+        <div id="contactError" class="error"></div>
+
+        <!-- Gender -->
+        <label>Gender</label>
+        <div class="options">
+            <input type="radio" name="gender"> Male
+            <input type="radio" name="gender"> Female
+        </div>
+        <div id="genderError" class="error"></div>
+
+        <!-- Events -->
+        <label>Events to Participate</label>
+        <div class="options">
+            <input type="checkbox" name="event"> Quiz
+            <input type="checkbox" name="event"> Debate
+            <input type="checkbox" name="event"> Workshop
+        </div>
+        <div id="eventError" class="error"></div>
+
+        <!-- Event Type -->
+        <label>Event Type</label>
+        <select id="eventType">
+            <option value="">Select Event Type</option>
+            <option value="Technical">Technical</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Sports">Sports</option>
+        </select>
+        <div id="eventTypeError" class="error"></div>
+
+        <!-- Submit -->
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var contact = document.getElementById("contact").value;
+        var eventType = document.getElementById("eventType").value;
+
+        var genders = document.getElementsByName("gender");
+        var events = document.getElementsByName("event");
+
+        var nameError = document.getElementById("nameError");
+        var emailError = document.getElementById("emailError");
+        var contactError = document.getElementById("contactError");
+        var genderError = document.getElementById("genderError");
+        var eventError = document.getElementById("eventError");
+        var eventTypeError = document.getElementById("eventTypeError");
+
+        // Clear previous errors
+        nameError.innerHTML = "";
+        emailError.innerHTML = "";
+        contactError.innerHTML = "";
+        genderError.innerHTML = "";
+        eventError.innerHTML = "";
+        eventTypeError.innerHTML = "";
+
+        var isValid = true;
+
+        // Name validation
+        if (name === "") {
+            nameError.innerHTML = "Name cannot be empty";
+            isValid = false;
+        }
+
+        // Email validation
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email === "") {
+            emailError.innerHTML = "Email cannot be empty";
+            isValid = false;
+        } else if (!emailPattern.test(email)) {
+            emailError.innerHTML = "Enter a valid email address";
+            isValid = false;
+        }
+
+        // Contact number validation
+        var contactPattern = /^[0-9]{10}$/;
+        if (contact === "") {
+            contactError.innerHTML = "Contact number cannot be empty";
+            isValid = false;
+        } else if (!contactPattern.test(contact)) {
+            contactError.innerHTML = "Contact number must be exactly 10 digits";
+            isValid = false;
+        }
+
+        // Gender validation
+        var genderSelected = false;
+        for (var i = 0; i < genders.length; i++) {
+            if (genders[i].checked) {
+                genderSelected = true;
+                break;
+            }
+        }
+        if (!genderSelected) {
+            genderError.innerHTML = "Please select gender";
+            isValid = false;
+        }
+
+        // Event checkbox validation
+        var eventSelected = false;
+        for (var i = 0; i < events.length; i++) {
+            if (events[i].checked) {
+                eventSelected = true;
+                break;
+            }
+        }
+        if (!eventSelected) {
+            eventError.innerHTML = "Select at least one event";
+            isValid = false;
+        }
+
+        // Event type validation
+        if (eventType === "") {
+            eventTypeError.innerHTML = "Please select an event type";
+            isValid = false;
+        }
+
+        return isValid; // false stops form submission
+    }
+</script>
+
+</body>
+</html>

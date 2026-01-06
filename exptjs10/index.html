@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            width: 420px;
+            margin: 60px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        .options {
+            margin-top: 5px;
+        }
+
+        .options input {
+            margin-right: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Feedback Form</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <!-- Name -->
+        <label>Name</label>
+        <input type="text" id="name">
+        <div id="nameError" class="error"></div>
+
+        <!-- Email -->
+        <label>Email</label>
+        <input type="text" id="email">
+        <div id="emailError" class="error"></div>
+
+        <!-- Rating -->
+        <label>Rating</label>
+        <div class="options">
+            <input type="radio" name="rating"> Poor
+            <input type="radio" name="rating"> Good
+            <input type="radio" name="rating"> Excellent
+        </div>
+        <div id="ratingError" class="error"></div>
+
+        <!-- Suggestions -->
+        <label>Suggestions</label>
+        <textarea id="suggestions"></textarea>
+        <div id="suggestionError" class="error"></div>
+
+        <!-- Subscription (Optional) -->
+        <div class="options">
+            <input type="checkbox" id="subscribe">
+            Yes, I want updates
+        </div>
+
+        <!-- Submit -->
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var suggestions = document.getElementById("suggestions").value;
+
+        var ratings = document.getElementsByName("rating");
+
+        var nameError = document.getElementById("nameError");
+        var emailError = document.getElementById("emailError");
+        var ratingError = document.getElementById("ratingError");
+        var suggestionError = document.getElementById("suggestionError");
+
+        // Clear previous errors
+        nameError.innerHTML = "";
+        emailError.innerHTML = "";
+        ratingError.innerHTML = "";
+        suggestionError.innerHTML = "";
+
+        var isValid = true;
+
+        // Name validation
+        if (name === "") {
+            nameError.innerHTML = "Name cannot be empty";
+            isValid = false;
+        }
+
+        // Email validation
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email === "") {
+            emailError.innerHTML = "Email cannot be empty";
+            isValid = false;
+        } else if (!emailPattern.test(email)) {
+            emailError.innerHTML = "Enter a valid email address";
+            isValid = false;
+        }
+
+        // Rating validation
+        var ratingSelected = false;
+        for (var i = 0; i < ratings.length; i++) {
+            if (ratings[i].checked) {
+                ratingSelected = true;
+                break;
+            }
+        }
+        if (!ratingSelected) {
+            ratingError.innerHTML = "Please select a rating";
+            isValid = false;
+        }
+
+        // Suggestions validation
+        if (suggestions === "") {
+            suggestionError.innerHTML = "Suggestions cannot be empty";
+            isValid = false;
+        }
+
+        // Subscription checkbox is OPTIONAL (no validation)
+
+        return isValid; // false prevents form submission
+    }
+</script>
+
+</body>
+</html>
